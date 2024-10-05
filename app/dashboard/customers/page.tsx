@@ -19,15 +19,15 @@ export default async function Page({
   const query = searchParams?.query || '';
   const currentPage = Number(searchParams?.page) || 1;
 
-  // Obtener clientes filtrados (o todos si no hay consulta)
+ 
   const customers: FormattedCustomersTable[] = await fetchFilteredCustomers(query);
 
-  // Manejo de errores si no se obtienen clientes
+ 
   if (!customers || customers.length === 0) {
     throw new Error('Failed to fetch customers');
   }
 
-  // Limitar la cantidad de clientes a mostrar por página (por ejemplo, 10)
+  
   const pageSize = 10;
   const paginatedCustomers = customers.slice(
     (currentPage - 1) * pageSize,
